@@ -1,15 +1,12 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
-public class GladiatorController : MonoBehaviour {
-
-
+public class GladiatorController : MonoBehaviour
+{
     SpriteRenderer Srend;
     Animator anim;
     Rigidbody2D rb;
-
 
     //change these variables if you wish to test different speeds and jump heights
     //[SerializeField]
@@ -18,13 +15,10 @@ public class GladiatorController : MonoBehaviour {
     [SerializeField]
     float speed = 5.0f;
 
-
     //this variable is used for the screen wrapping
     float screenHalfWidthInWorldUnits;
 
     bool screenWrap = false;
-
-
 
     void Start()
     {
@@ -37,18 +31,18 @@ public class GladiatorController : MonoBehaviour {
         //screenHalfWidthInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize + halfPlayerWidth;
     }
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         //controller and sprite manipulation
         #region
         //controller and sprite manipulation
         if (Input.GetKey(KeyCode.UpArrow))
         {
             anim.SetBool("WalkUp", true);
-
             transform.Translate(Vector2.up * Time.fixedDeltaTime);
-         
             anim.SetBool("Idle", false);
-        }else
+        }
+        else
         {
             anim.SetBool("WalkUp", false);
 
@@ -63,27 +57,23 @@ public class GladiatorController : MonoBehaviour {
         else
         {
             anim.SetBool("WalkRight", false);
-
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             anim.SetBool("WalkLeft", true);
             transform.Translate(Vector2.left * Time.fixedDeltaTime);
-
         }
-else        {
+        else
+        {
             anim.SetBool("WalkLeft", false);
-
         }
 
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
             anim.SetBool("WalkDown", true);
-
             transform.Translate(Vector2.down * Time.fixedDeltaTime);
-
         }
         else
         {
@@ -91,14 +81,9 @@ else        {
         }
 
 
-
-       
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
             anim.SetBool("Idle", false);
-
         }
 
         if (Input.GetKeyDown(KeyCode.T))
@@ -108,7 +93,7 @@ else        {
         }
         if (Input.GetKeyUp(KeyCode.T))
         {
-       
+
         }
         #endregion // //controls and sprite manipulation
         float moveInputHorisontal = Input.GetAxisRaw("Horizontal");
@@ -170,7 +155,7 @@ else        {
             }
         } */
         #endregion//camera wrap 
-       
+
     }
 }
 
